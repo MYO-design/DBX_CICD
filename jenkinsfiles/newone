@@ -16,7 +16,7 @@ pipeline {
         stage('Run Python Script') {
     steps {
         echo 'Running Python script...'
-        bat 'python scripts\\test.py'
+        bat 'python scripts\\CICD.py'
     }
 }
     }
