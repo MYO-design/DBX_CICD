@@ -1,25 +1,34 @@
 pipeline {
     agent any
 
-    triggers {
-        pollSCM('H/2 * * * *')
-    }
-
     stages {
         stage('Clone Repo') {
             steps {
-                echo 'Checking out repo...'
-                checkout scm
+                echo 'Checking out repository...'
+                checkout scm  // This checks out your Git repository
             }
         }
 
         stage('Run Python Script') {
-    steps {
-        echo 'Running Python script...'
-        bat 'python scripts\\CICD.py'
+            steps {
+                echo 'Executing Python script...'
+                
+                // Using full absolute path to Python
+                bat 'C:\\Python39\\python.exe scripts\\CICD.py'
+                
+                // (Optional) Verify Python works
+                bat 'C:\\Python39\\python.exe --version'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline execution completed'
+        }
+        failure {
+            echo 'Pipeline failed! Check logs for errors.'
+            // Optional: Send failure notification (e.g., email, Slack)
+        }
     }
 }
-    }
-}
-
-
