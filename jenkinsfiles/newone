@@ -1,1 +1,23 @@
-dwdwdw
+pipeline {
+    agent any
+
+    triggers {
+        pollSCM('H/2 * * * *')
+    }
+
+    stages {
+        stage('Clone Repo') {
+            steps {
+                echo 'Checking out repo...'
+                checkout scm
+            }
+        }
+
+        stage('Run Python Script') {
+            steps {
+                echo 'Running Python script...'
+                sh 'python3 CICD.py' // use 'python' on Windows
+            }
+        }
+    }
+}
