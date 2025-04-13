@@ -14,10 +14,12 @@ pipeline {
         }
 
         stage('Run Python Script') {
-            steps {
-                echo 'Running Python script...'
-                sh 'python3 CICD.py' // use 'python' on Windows
-            }
-        }
+    steps {
+        echo 'Running Python script...'
+        bat 'python scripts\\test.py'
     }
 }
+    }
+}
+
+
