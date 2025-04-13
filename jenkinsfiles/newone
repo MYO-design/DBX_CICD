@@ -14,7 +14,7 @@ pipeline {
                 echo 'Executing Python script...'
                 
                 // Using full absolute path to Python
-                bat 'C:\\Python39\\python.exe scripts\\CICD.py'
+                bat 'C:\\Python39\\python.exe CICD.py'
                 
                 // (Optional) Verify Python works
                 bat 'C:\\Python39\\python.exe --version'
